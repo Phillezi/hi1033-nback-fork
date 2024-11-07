@@ -51,7 +51,6 @@ class GameVM(
     private val userPreferencesRepository: UserPreferencesRepository,
     private val _application: GameApplication,
 ) : IGameVM, ViewModel() {
-    // TODO(do better)
     private val _settingsVMState = MutableStateFlow<ISettingsVM>(_settingsVM)
     private val _leaderBoardVMState = MutableStateFlow<ILeaderBoardVM>(_leaderBoardVM)
 
@@ -104,7 +103,7 @@ class GameVM(
         audioEvents = nBackHelper.generateNBackString(
             _settingsVM.nrOfTurns.value,
             _settingsVM.sideLength.value * _settingsVM.sideLength.value,
-            _settingsVM.percentMatches.value,
+            _settingsVM.audioPercentMatches.value,
             _settingsVM.nBack.value
         ).toList().toTypedArray()
 
@@ -121,11 +120,7 @@ class GameVM(
                 userPreferencesRepository.saveHighScore(_score.value)
             }
             Log.d("Saving", _settingsVM.sideLength.value.toString())
-            userPreferencesRepository.saveSideLength(_settingsVM.sideLength.value)
-            userPreferencesRepository.saveN(_settingsVM.nBack.value)
-            userPreferencesRepository.saveTurns(_settingsVM.nrOfTurns.value)
-            userPreferencesRepository.savePercent(_settingsVM.percentMatches.value)
-            userPreferencesRepository.saveTime(_settingsVM.eventInterval.value)
+            _settingsVM.save()
         }
     }
 

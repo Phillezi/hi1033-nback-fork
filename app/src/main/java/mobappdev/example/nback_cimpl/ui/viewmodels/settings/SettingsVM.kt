@@ -35,6 +35,9 @@ class SettingsVM(
     override fun setPercentMatches(percentMatches: Int) {
         _gameSettings.percentMatches.value = percentMatches
     }
+    override fun setAudioPercentMatches(audioPercentMatches: Int) {
+        _gameSettings.audioPercentMatches.value = audioPercentMatches
+    }
     override fun setEventInterval(eventInterval: Long) {
         _gameSettings.eventInterval.value = eventInterval
     }
@@ -45,6 +48,7 @@ class SettingsVM(
     override val sideLength: StateFlow<Int> get() = _gameSettings.sideLength
     override val nrOfTurns: StateFlow<Int> get() = _gameSettings.nrOfTurns
     override val percentMatches: StateFlow<Int> get() = _gameSettings.percentMatches
+    override val audioPercentMatches: StateFlow<Int> get() = _gameSettings.audioPercentMatches
     override val eventInterval: StateFlow<Long> get() = _gameSettings.eventInterval
 
     override fun load() {
@@ -66,11 +70,16 @@ class SettingsVM(
                 setNrOfTurns(it)
             }
         }
-
         viewModelScope.launch {
             userPreferencesRepository.percent.collect {
                 Log.d("LOAD", "PercentMatches: $it")
                 setPercentMatches(it)
+            }
+        }
+        viewModelScope.launch {
+            userPreferencesRepository.audioPercent.collect {
+                Log.d("LOAD", "AudioPercentMatches: $it")
+                setAudioPercentMatches(it)
             }
         }
         viewModelScope.launch {
@@ -97,6 +106,10 @@ class SettingsVM(
         viewModelScope.launch {
             Log.d("SAVE", "PercentMatches: ${percentMatches.value}")
             userPreferencesRepository.savePercent(percentMatches.value)
+        }
+        viewModelScope.launch {
+            Log.d("SAVE", "AudioPercentMatches: ${audioPercentMatches.value}")
+            userPreferencesRepository.saveAudioPercent(audioPercentMatches.value)
         }
         viewModelScope.launch {
             Log.d("SAVE", "EventInterval: ${eventInterval.value}")

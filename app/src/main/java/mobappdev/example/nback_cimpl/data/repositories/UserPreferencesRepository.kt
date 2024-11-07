@@ -35,6 +35,7 @@ class UserPreferencesRepository(
         val N = intPreferencesKey("n")
         val TURNS = intPreferencesKey("turns")
         val PERCENT = intPreferencesKey("percent")
+        val AUDIO_PERCENT = intPreferencesKey("audioPercent")
         val TIME = longPreferencesKey("time")
         const val TAG = "UserPreferencesRepo"
     }
@@ -60,6 +61,7 @@ class UserPreferencesRepository(
     val n: Flow<Int> = dataStore.data.getPreference(N, 2)
     val turns: Flow<Int> = dataStore.data.getPreference(TURNS, 10)
     val percent: Flow<Int> = dataStore.data.getPreference(PERCENT, 30)
+    val audioPercent: Flow<Int> = dataStore.data.getPreference(AUDIO_PERCENT, 30)
     val time: Flow<Long> = dataStore.data.getPreference(TIME, 2000L)
 
     private suspend fun <T> savePreference(key: Preferences.Key<T>, value: T) {
@@ -73,5 +75,6 @@ class UserPreferencesRepository(
     suspend fun saveN(n: Int) = savePreference(N, n)
     suspend fun saveTurns(turns: Int) = savePreference(TURNS, turns)
     suspend fun savePercent(percent: Int) = savePreference(PERCENT, percent)
+    suspend fun saveAudioPercent(audioPercent: Int) = savePreference(AUDIO_PERCENT, audioPercent)
     suspend fun saveTime(time: Long) = savePreference(TIME, time)
 }

@@ -31,6 +31,7 @@ fun GameSettings(vm: ISettingsVM) {
     val sideLength by vm.sideLength.collectAsState()
     val nrOfTurns by vm.nrOfTurns.collectAsState()
     val percentMatches by vm.percentMatches.collectAsState()
+    val audioPercentMatches by vm.audioPercentMatches.collectAsState()
     val eventInterval by vm.eventInterval.collectAsState()
 
     LaunchedEffect(nBack) {
@@ -48,7 +49,8 @@ fun GameSettings(vm: ISettingsVM) {
     val settingsList = listOf(Setting("NBack", 1, 7, nBack) { vm.setNBack(it) },
         Setting("Side Length", 3, 5, sideLength) { vm.setSideLength(it) },
         Setting("Turns", nBack + 2, 25, nrOfTurns) { vm.setNrOfTurns(it) },
-        Setting("Percent Matches", 10, 50, percentMatches) { vm.setPercentMatches(it) },
+        Setting("Visual Percent Matches", 10, 45, percentMatches) { vm.setPercentMatches(it) },
+        Setting("Audio Percent Matches", 10, 45, audioPercentMatches) { vm.setAudioPercentMatches(it) },
         Setting("Event Interval", 500, 4000, eventInterval.toInt(), 35) { vm.setEventInterval(it.toLong()) })
 
     Column(

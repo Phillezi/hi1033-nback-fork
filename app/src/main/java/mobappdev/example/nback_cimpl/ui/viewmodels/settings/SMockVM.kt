@@ -32,6 +32,10 @@ class SMockVM: ISettingsVM {
         TODO("Not yet implemented")
     }
 
+    override fun setAudioPercentMatches(audioPercentMatches: Int) {
+        TODO("Not yet implemented")
+    }
+
     override fun setEventInterval(eventInterval: Long) {
         TODO("Not yet implemented")
     }
@@ -47,6 +51,8 @@ class SMockVM: ISettingsVM {
     override val nrOfTurns: StateFlow<Int>
         get() = TODO("Not yet implemented")
     override val percentMatches: StateFlow<Int>
+        get() = TODO("Not yet implemented")
+    override val audioPercentMatches: StateFlow<Int>
         get() = TODO("Not yet implemented")
     override val eventInterval: StateFlow<Long>
         get() = TODO("Not yet implemented")

@@ -10,6 +10,7 @@ data class GameSettings(
     var sideLength: MutableStateFlow<Int> = MutableStateFlow(3),
     var nrOfTurns: MutableStateFlow<Int> = MutableStateFlow(10),
     var percentMatches: MutableStateFlow<Int> = MutableStateFlow(30),
+    var audioPercentMatches: MutableStateFlow<Int> = MutableStateFlow(40),
     var eventInterval: MutableStateFlow<Long> = MutableStateFlow(2000L)
 ) {
     override fun toString(): String {
@@ -20,6 +21,7 @@ data class GameSettings(
                 "\n\tsideLength=${sideLength.value}, " +
                 "\n\tnrOfTurns=${nrOfTurns.value}, " +
                 "\n\tpercentMatches=${percentMatches.value}, " +
+                "\n\taudioPercentMatches=${audioPercentMatches.value}, " +
                 "\n\teventInterval=${eventInterval.value}" +
                 "\n)"
     }

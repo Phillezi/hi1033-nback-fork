@@ -13,6 +13,7 @@ interface ISettingsVM {
     fun setSideLength(sideLength: Int)
     fun setNrOfTurns(nrOfTurns: Int)
     fun setPercentMatches(percentMatches: Int)
+    fun setAudioPercentMatches(audioPercentMatches: Int)
     fun setEventInterval(eventInterval: Long)
 
     val gameType: StateFlow<GameType>
@@ -21,6 +22,7 @@ interface ISettingsVM {
     val sideLength: StateFlow<Int>
     val nrOfTurns: StateFlow<Int>
     val percentMatches: StateFlow<Int>
+    val audioPercentMatches: StateFlow<Int>
     val eventInterval: StateFlow<Long>
 
     fun load()
