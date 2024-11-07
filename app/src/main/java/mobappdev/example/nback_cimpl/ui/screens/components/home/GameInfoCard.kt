@@ -40,6 +40,7 @@ fun GameInfoCard() {
                 contentScale = ContentScale.Crop,
                 modifier = Modifier
                     .matchParentSize()
+                    .background(Color.LightGray)
                     .clip(RoundedCornerShape(16.dp))
             )
             Column(
@@ -57,6 +58,7 @@ fun GameInfoCard() {
                 Text(
                     text = "The N-Back game is a cognitive training exercise that challenges working memory by requiring players to remember items that appeared a certain number of steps earlier in the sequence.",
                     style = MaterialTheme.typography.bodyLarge.copy(fontSize = 16.sp),
+                    color = Color.Black,
                     modifier = Modifier.padding(bottom = 8.dp)
                 )
 
@@ -66,13 +68,14 @@ fun GameInfoCard() {
                         fontSize = 14.sp,
                         fontWeight = FontWeight.Bold
                     ),
-                    color = Color.Gray,
+                    color = Color.Black,
                     modifier = Modifier.padding(bottom = 8.dp)
                 )
 
                 Text(
                     text = "In this game, you will be presented with sequences of items, and your task is to identify when the current item matches the one shown 'N' steps earlier.",
                     style = MaterialTheme.typography.bodyLarge.copy(fontSize = 16.sp),
+                    color = Color.Black,
                     modifier = Modifier.padding(bottom = 16.dp)
                 )
             }

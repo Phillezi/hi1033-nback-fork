@@ -328,6 +328,16 @@ class GameVM(
         viewModelScope.launch {
             _textToSpeech = TextToSpeech(_application) { status ->
                 if (status == TextToSpeech.SUCCESS) {
+                    val result = _textToSpeech?.setLanguage(java.util.Locale.US)
+                    if (result == TextToSpeech.LANG_MISSING_DATA || result == TextToSpeech.LANG_NOT_SUPPORTED) {
+                        Log.e("TTS", "Us language is not supported on this device.")
+                    } else {
+                        _textToSpeech?.speak("Hello", TextToSpeech.QUEUE_FLUSH, null, null)
+                    }
+                } else {
+                    Log.e("TTS", "Initialization failed.")
+                }
+                if (status == TextToSpeech.SUCCESS) {
                     println("TextToSpeech Initialized Successfully")
                 }
             }
