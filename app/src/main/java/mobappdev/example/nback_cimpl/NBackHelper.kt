@@ -1,5 +1,7 @@
 package mobappdev.example.nback_cimpl
 
+import android.util.Log
+
 /**
  * This class provides the connection to the C-model
  *
@@ -11,15 +13,13 @@ package mobappdev.example.nback_cimpl
  * Author: Yeetivity
  *
  */
-
-
-
 class NBackHelper {
 
     // Native function declaration (calls the C function)
     private external fun createNBackString(size: Int, combinations: Int, percentMatch: Int, nBack: Int): IntArray
 
     fun generateNBackString(size: Int, combinations: Int, percentMatch: Int, nBack: Int): IntArray {
+        Log.d("NBackHelper", "In Kotlin: size=$size, combinations=$combinations, percentMatch=$percentMatch, nBack=$nBack")
         return createNBackString(size, combinations, percentMatch, nBack)
     }
 

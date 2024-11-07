@@ -5,7 +5,8 @@ import android.content.Context
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.preferencesDataStore
-import mobappdev.example.nback_cimpl.data.UserPreferencesRepository
+import mobappdev.example.nback_cimpl.data.repositories.LeaderBoardRepository
+import mobappdev.example.nback_cimpl.data.repositories.UserPreferencesRepository
 
 /**
  * This is the Main Application
@@ -32,9 +33,11 @@ private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(
  */
 class GameApplication: Application() {
     lateinit var userPreferencesRespository: UserPreferencesRepository
+    lateinit var leaderBoardRepository: LeaderBoardRepository
 
     override fun onCreate() {
         super.onCreate()
         userPreferencesRespository = UserPreferencesRepository(dataStore)
+        leaderBoardRepository = LeaderBoardRepository(applicationContext)
     }
 }
