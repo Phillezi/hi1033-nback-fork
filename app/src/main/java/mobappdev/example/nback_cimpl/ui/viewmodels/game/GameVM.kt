@@ -147,7 +147,7 @@ class GameVM(
         val guess: Guess
         if (previousValue != -1 && currentValue == previousValue) {
             _nrOfCorrectGuesses.value += 1
-            _score.value = 1
+            _score.value += 1
             guess = Guess.CORRECT
         } else {
             _score.value = 0.coerceAtLeast(_score.value - 1)
